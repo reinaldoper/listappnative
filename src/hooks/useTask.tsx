@@ -28,17 +28,20 @@ export function useTasks() {
 
   useEffect(() => {
     const q = query(collection(db, 'tasks'), orderBy('createdAt', 'desc'));
+    const user = auth.currentUser;
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const list: Task[] = [];
       querySnapshot.forEach((docTask) => {
         const data = docTask.data();
-        list.push({
-          id: docTask.id,
-          title: data.title,
-          completed: data.completed,
-          description: data.description,
-          createdAt: data.createdAt.toDate(),
-        });
+        if (data.uid == user?.uid) {
+          list.push({
+            id: docTask.id,
+            title: data.title,
+            completed: data.completed,
+            description: data.description,
+            createdAt: data.createdAt.toDate(),
+          });
+        }
       });
       setTasks(list);
     });

@@ -127,6 +127,12 @@ npx react-native run-android
 ```bash
 cd android
 ./gradlew assembleDebug
+
+#ou
+
+cd android
+./gradlew assembleRelease
+
 ```
 
 1. Depois disso, o APK estará gerado em:
@@ -135,6 +141,10 @@ cd android
 
 ```bash
 android/app/build/outputs/apk/debug/app-debug.apk
+
+#ou
+
+android/app/build/outputs/apk/release/app-release.apk
 ```
 
 
