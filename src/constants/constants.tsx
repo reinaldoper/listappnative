@@ -20,6 +20,8 @@ const MSG_SGIN = 'Login';
 const MSG_PROFILE = 'Register';
 const MSG_HOME = 'Home';
 
+//testes
+
 export {
   MSG_ERROR_DATES,
   MSR_ERROR_REGISTER,
