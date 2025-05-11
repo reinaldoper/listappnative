@@ -75,7 +75,7 @@ export default function Users() {
                 },
               }}
               render={({field: {onChange, value}, fieldState: {error}}) => (
-                <View className="flex-col w-full mb-5 px-5 justify-center items-center">
+                <View className="mb-5 px-5">
                   <TextInput
                     placeholder="Email"
                     keyboardType="email-address"
@@ -99,7 +99,7 @@ export default function Users() {
               defaultValue=""
               rules={{required: `${MSG_PASSWORD}`}}
               render={({field: {onChange, value}, fieldState: {error}}) => (
-                <View className="flex-col w-full px-5 justify-center items-center">
+                <View className="px-5">
                   <TextInput
                     placeholder="Senha"
                     secureTextEntry
