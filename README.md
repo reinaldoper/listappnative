@@ -1,97 +1,175 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📋 TodoListApp
 
-# Getting Started
+Aplicativo de lista de tarefas construído com **React Native**, **Firebase Firestore** e **Gluestack UI**.  
+Permite adicionar, listar, concluir e remover tarefas com animações suaves e interface intuitiva.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🚀 Funcionalidades
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- ✅ Adicionar tarefas com título e descrição
+- 📋 Listar tarefas em tempo real (integração com Firebase Firestore)
+- ✔️ Marcar tarefas como concluídas
+- ❌ Remover tarefas
+- 💅 Interface com Gluestack UI
+- 📱 Navegação entre telas com React Navigation
+- 🎬 Animações suaves com Reanimated
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 📂 Estrutura de Pastas
 
-# OR using Yarn
-yarn start
+```bash
+TodoListApp/
+├── android
+│   ├── app
+│   ├── build
+│   ├── build.gradle
+│   ├── gradle
+│   ├── gradle.properties
+│   ├── gradlew
+│   ├── gradlew.bat
+│   └── settings.gradle
+├── app.json
+├── babel.config.cjs
+├── Gemfile
+├── index.js
+├── ios
+│   ├── Podfile
+│   ├── TodoListApp
+│   └── TodoListApp.xcodeproj
+├── jest.config.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── src
+│   ├── App.tsx
+│   ├── constants
+│   ├── components
+│   ├── hooks
+│   ├── styles
+│   ├── firebase
+│   ├── screens
+│   └── types
+├── __tests__
+│   └── App.test.tsx
+│   ├── index.js
+└── tsconfig.json
+
 ```
 
-## Step 2: Build and run your app
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+---
 
-### Android
+## 🧑‍💻 Como rodar o projeto
 
-```sh
-# Using npm
-npm run android
+### 1. Clonar o repositório
 
-# OR using Yarn
-yarn android
+```bash
+git clone https://github.com/seu-usuario/listappnative.git
+cd listappnative
+&&
+npm install
+##ou
+yarn install
+
 ```
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### 2. Configurar o Firebase
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+1. Criar um projeto no Firebase Console
+- Acesse o site do Firebase (firebase.google.com) e crie uma conta, caso ainda não tenha.
 
-```sh
-bundle install
+- No Firebase Console, crie um novo projeto.
+
+- Dentro do projeto, habilite os métodos de autenticação que pretende usar, por exemplo, e-mail e senha, em Authentication > Sign-in method.
+
+- Registre sua aplicação para as plataformas desejadas (iOS e/ou Android), fornecendo o identificador do app (exemplo: com.reactnativefirebase).
+
+---
+
+2. Baixe os arquivos de configuração gerados:
+
+- Para Android: google-services.json
+
+- Para iOS: GoogleService-Info.plist
+
+- Copie suas credenciais do Firebase Web SDK
+
+- Crie um .env na raiz do projeto e coloque as credenciais do firebase:
+
+```env
+
+FIREBASE_API_KEY="apiKey"
+FIREBASE_AUTH_DOMAIN="authDomain"
+FIREBASE_PROJECT_ID="projectId"
+FIREBASE_STORAGE_BUCKET="storageBucket"
+FIREBASE_MESSAGING_SENDER_ID="messagingSenderId",
+FIREBASE_APP_ID="appId"
+MEASUREMENT_ID="measurementId"
+```
+---
+
+📱 Rodar no Android
+- Certifique-se de estar com um emulador ou dispositivo conectado.
+
+```bash
+npx react-native run-android
 ```
 
-Then, and every time you update your native dependencies, run:
+---
 
-```sh
-bundle exec pod install
+### 3. 🛠️ Gerar APK de Debug local
+
+```bash
+cd android
+./gradlew assembleDebug
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+1. Depois disso, o APK estará gerado em:
 
-```sh
-# Using npm
-npm run ios
+⚠️ Atenção: o APK de debug não é assinado para a Play Store — ele serve apenas para instalar manualmente em aparelhos para testes.
 
-# OR using Yarn
-yarn ios
+```bash
+android/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+---
 
-## Step 3: Modify your app
+### 4. 🧪 Comandos úteis
 
-Now that you have successfully run the app, let's make changes!
+```bash
+npx react-native start --reset-cache            
+npm run android                
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+---
 
-## Congratulations! :tada:
+### 5. 📦 Tecnologias utilizadas
 
-You've successfully run and modified your React Native App. :partying_face:
+- React Native
 
-### Now what?
+- Firebase Firestore
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- React Navigation
 
-# Troubleshooting
+- Gluestack UI
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- react-hook-form
 
-# Learn More
+- react-native-reanimated
 
-To learn more about React Native, take a look at the following resources:
+- Nodejs >=18
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+---
+
+### 6. 🧑 Autor
+- Desenvolvido por: Reinaldo Pereira dos Santos
+- 📍 Dourados - MS
+- 📧 reinaldoper83@gmail.com
