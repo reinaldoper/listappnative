@@ -11,6 +11,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { colors } from '../styles/colors';
 
+/**
+ * Component to render a single task item with animation.
+ * @param {{task: Task, onToggle: (id: string, completed: boolean) => void, onRemove: (id: string) => void}} props
+ * @returns {JSX.Element}
+ */
 export default function TaskItem({task, onToggle, onRemove}: TaskItemProps) {
   const translateX = useSharedValue(-20);
   const opacity = useSharedValue(0);

@@ -25,6 +25,11 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
+/**
+ * Component to render the register screen with a form to register and a button to navigate to the login screen.
+ *
+ * @returns {JSX.Element}
+ */
 export default function Users() {
   const {createUser} = useTasks();
   const {control, handleSubmit, reset} = useForm<User>();

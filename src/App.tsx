@@ -18,6 +18,14 @@ import LoginScreen from './screens/Login';
 
 const Stack = createStackNavigator();
 
+/**
+ * App component is the root component of the application.
+ * It sets up the navigation stack with three screens: Home, Users, and Login.
+ * The initial screen is set to Login, and headers are hidden for all screens.
+ * It also wraps the application with GluestackUIProvider for UI theming
+ * and GestureHandlerRootView for gesture handling.
+ */
+
 export default function App() {
   return (
     <GestureHandlerRootView style={styles.home}>

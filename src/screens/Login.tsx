@@ -23,6 +23,10 @@ import {useTasks} from '../hooks/useTask';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { colors } from '../styles/colors';
 
+/**
+ * Component to render the login screen with a form to login and a button to navigate to the register screen.
+ * @returns {JSX.Element}
+ */
 export default function LoginScreen() {
   const {login} = useTasks();
   const {

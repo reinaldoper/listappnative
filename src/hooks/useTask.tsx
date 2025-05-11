@@ -6,6 +6,23 @@ import { Task } from '../types/types';
 import { MSG_ERROR_DATES, MSG_ERROR_FIREBASE, MSG_USER_NOT_FOUND } from '../constants/constants';
 
 
+  /**
+   * This hook provides functions to interact with the Firestore database.
+   *
+   * It also provides a `tasks` state, which is an array of tasks.
+   *
+   * The `addTask` function adds a new task to the database.
+   *
+   * The `toggleTaskCompleted` function toggles the `completed` status of a task.
+   *
+   * The `removeTask` function removes a task from the database.
+   *
+   * The `createUser` function creates a new user in the database.
+   *
+   * The `login` function logs a user in and checks if the user exists in the database.
+   *
+   * @returns {{ tasks: Task[], addTask: (title: string, description?: string) => Promise<void>, toggleTaskCompleted: (id: string, completed: boolean) => Promise<void>, removeTask: (id: string) => Promise<void>, createUser: (email: string, password: string) => Promise<void>, login: (email: string, password: string) => Promise<void> }}
+   */
 export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
 

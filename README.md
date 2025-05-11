@@ -1,7 +1,8 @@
 # 📋 TodoListApp
 
-Aplicativo de lista de tarefas construído com **React Native**, **Firebase Firestore** e **Gluestack UI**.  
-Permite adicionar, listar, concluir e remover tarefas com animações suaves e interface intuitiva.
+1. Aplicativo de lista de tarefas construído com **React Native**, **Firebase Firestore** e **Gluestack UI**.  
+2. Permite adicionar, listar, concluir e remover tarefas com animações suaves e interface intuitiva.
+3. Cria e loga usuário na aplicação, com email e senha.
 
 ---
 
