@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  ImageBackground,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
@@ -20,10 +21,10 @@ import {
   MSG_REGISTER,
   MSG_PASSWORD,
   MSG_FORMAT_EMAIL,
-  MSG_PROFILE
+  MSG_PROFILE,
 } from '../constants/constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import {styles} from '../styles/style';
 
 /**
  * Component to render the register screen with a form to register and a button to navigate to the login screen.
@@ -50,85 +51,90 @@ export default function Users() {
   }
 
   return (
-    <View className="flex-1">
-      <Text className="text-3xl font-bold text-center text-blue-600">{MSG_PROFILE}</Text>
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-neutral-500 justify-center items-center px-4">
-      <View className="w-full max-w-md">
-        <View className="gap-4">
-          <Controller
-            control={control}
-            name="email"
-            defaultValue=""
-            rules={{
-              required: `${MSG_EMAIL}`,
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: `${MSG_FORMAT_EMAIL}`,
-              },
-            }}
-            render={({field: {onChange, value}, fieldState: {error}}) => (
-              <View className='flex-col w-full mb-5 px-5 justify-center items-center'>
-                <TextInput
-                  placeholder="Email"
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  onChangeText={onChange}
-                  value={value}
-                  editable={!loading}
-                  className="w-full border border-gray-300 p-3 rounded-md text-base bg-white"
-                />
-                {error && (
-                  <Text className="text-red-500 text-sm mt-1">
-                    {error.message}
-                  </Text>
-                )}
-              </View>
-            )}
-          />
-          <Controller
-            control={control}
-            name="password"
-            defaultValue=""
-            rules={{required: `${MSG_PASSWORD}`}}
-            render={({field: {onChange, value}, fieldState: {error}}) => (
-              <View className='flex-col w-full px-5 justify-center items-center'>
-                <TextInput
-                  placeholder="Senha"
-                  secureTextEntry
-                  onChangeText={onChange}
-                  value={value}
-                  editable={!loading}
-                  className="w-full border border-gray-300 p-3 rounded-md text-base bg-white"
-                />
-                {error && (
-                  <Text className="text-red-500 text-sm mt-1">
-                    {error.message}
-                  </Text>
-                )}
-              </View>
-            )}
-          />
-          <TouchableOpacity
-            onPress={handleSubmit(onSubmit)}
-            disabled={loading}
-            className={`flex-row cursor-pointer justify-center items-center bg-blue-600 p-3 rounded-md ${
-              loading ? 'opacity-50' : ''
-            }`}>
-            <Icon name="add" size={24} color={colors.white} />
-            <Text className="text-white ml-2">{MSG_REGISTER}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Login' as never)}
-            className="mt-4 cursor-pointer">
-            <Text className="text-center text-white underline">
-              {MSG_LOGIN}
-            </Text>
-          </TouchableOpacity>
+    <ImageBackground
+      source={require('../assets/images/users.jpg')}
+      resizeMode="cover"
+      style={styles.image}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.keyboard}>
+        <View className="w-full max-w-md bg-lime-700 rounded-lg p-6 shadow-lg">
+          <Text className="text-3xl font-bold text-center text-blue-600 mb-6">
+            {MSG_PROFILE}
+          </Text>
+          <View className="gap-4">
+            <Controller
+              control={control}
+              name="email"
+              defaultValue=""
+              rules={{
+                required: `${MSG_EMAIL}`,
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: `${MSG_FORMAT_EMAIL}`,
+                },
+              }}
+              render={({field: {onChange, value}, fieldState: {error}}) => (
+                <View className="flex-col w-full mb-5 px-5 justify-center items-center">
+                  <TextInput
+                    placeholder="Email"
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    onChangeText={onChange}
+                    value={value}
+                    editable={!loading}
+                    className="w-full border border-gray-300 p-3 rounded-md text-base bg-white"
+                  />
+                  {error && (
+                    <Text className="text-red-500 text-sm mt-1">
+                      {error.message}
+                    </Text>
+                  )}
+                </View>
+              )}
+            />
+            <Controller
+              control={control}
+              name="password"
+              defaultValue=""
+              rules={{required: `${MSG_PASSWORD}`}}
+              render={({field: {onChange, value}, fieldState: {error}}) => (
+                <View className="flex-col w-full px-5 justify-center items-center">
+                  <TextInput
+                    placeholder="Senha"
+                    secureTextEntry
+                    onChangeText={onChange}
+                    value={value}
+                    editable={!loading}
+                    className="w-full border border-gray-300 p-3 rounded-md text-base bg-white"
+                  />
+                  {error && (
+                    <Text className="text-red-500 text-sm mt-1">
+                      {error.message}
+                    </Text>
+                  )}
+                </View>
+              )}
+            />
+            <TouchableOpacity
+              onPress={handleSubmit(onSubmit)}
+              disabled={loading}
+              className={`flex-row cursor-pointer justify-center items-center bg-blue-600 p-3 rounded-md ${
+                loading ? 'opacity-50' : ''
+              }`}>
+              <Icon name="add" size={24} color={colors.white} />
+              <Text className="text-white ml-2">{MSG_REGISTER}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Login' as never)}
+              className="mt-4 cursor-pointer">
+              <Text className="text-center text-white underline">
+                {MSG_LOGIN}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </KeyboardAvoidingView>
-    </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 }

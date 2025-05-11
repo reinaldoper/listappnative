@@ -7,4 +7,15 @@ export const styles = StyleSheet.create({
   home: {
     flex: 1,
   },
+  image: {
+    flex: 1,
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  keyboard: {
+    flex: 1, 
+    width: '100%', 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  }
 });

@@ -17,5 +17,5 @@
       "@env": ["./env.d.ts"] 
     }
   },
-  "include": ["src", "end.d.ts", "nativewind.d.ts",],
+  "include": ["src", "end.d.ts", "nativewind.d.ts", "declarations.d.ts"],
 }
