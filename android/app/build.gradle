@@ -79,7 +79,7 @@ android {
 
     namespace "com.listapp"
     defaultConfig {
-        applicationId "com.listapp"
+        applicationId "com.reinaldo.todolistapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -117,3 +117,5 @@ dependencies {
         implementation jscFlavor
     }
 }
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
